@@ -1,0 +1,71 @@
+/* styles/main.css
+   Custom CSS used alongside Tailwind utility classes.
+   Mobile-first, accessible, and focused on whitespace and clarity.
+*/
+
+:root{
+  --bg:#f8fafc;
+  --muted:#6b7280;
+  --card-bg:#ffffff;
+}
+
+html,body{height:100%;}
+body{
+  background-color:var(--bg);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.card{ /* fallback visual in case Tailwind components are not applied */
+  background:var(--card-bg);
+  border-radius:0.5rem;
+}
+
+#dropzone{
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#dropzone.dragover{ border-color:#6366f1; background-color: rgba(99,102,241,0.03); }
+
+.file-item{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:10px;
+  border-radius:8px;
+  transition:background-color 160ms ease, transform 160ms ease;
+}
+.file-item:hover{ background-color:#fbfbff; transform:translateY(-2px); }
+.file-thumb{
+  width:72px;
+  height:72px;
+  border-radius:6px;
+  object-fit:cover;
+  background:#f3f4f6;
+  box-shadow:0 1px 2px rgba(16,24,40,0.04);
+}
+
+.preview-img{
+  width:100%;
+  max-height:320px;
+  object-fit:contain;
+  border-radius:8px;
+  background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+}
+
+.small-muted{ color:var(--muted); font-size:13px; }
+
+button[aria-disabled="true"]{ opacity:0.6; cursor:not-allowed; }
+
+/* Focus and keyboard accessibility */
+#dropzone:focus{ box-shadow:0 0 0 4px rgba(99,102,241,0.12); border-color:#6366f1; }
+.file-item:focus{ outline:2px solid rgba(99,102,241,0.12); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
